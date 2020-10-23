@@ -1,33 +1,4 @@
-var tweets = [{
-    
-        id:1,
-        content: 'This is my first tweet',
-        date: '2-10-2020 13:45'
-},
-    {
-        id: 2,
-        content: 'This is my second tweet',
-        date: '10-10-2021'
-    },
-    {
-        id:3,
-        content:'This is my third tweet',
-        date: '17-10-2021'
-    }
-]
-
-var allTweets = document.getElementById("list");
-
-for(var i=0;i<tweets.length;i++){
-         var item = tweets[i];
-         var elem = document.createElement("li");
-         elem.value=item[0];
-         elem.innerHTML=item.id + ' ' + item.content + ' ' + item.date;
-
-         allTweets.appendChild(elem);
-    }
-
-    console.log(allTweets);
+    var tweets = [];
 
     function postNewTweet(){
 
@@ -44,4 +15,24 @@ for(var i=0;i<tweets.length;i++){
         document.getElementById('list').appendChild(li);
         document.getElementById('newTweet').value="";
         console.log(tweets);
+    
+
+    var buttonDelete = document.createElement("button");
+buttonDelete.innerHTML = '<i class="far fa-trash-alt" del-date="'+date + ' ' + time +'"></i>';
+buttonDelete.onclick = deleteItem;
+
+function deleteItem(e) {
+    var ul = document.getElementById('list');
+    ul.removeChild(li);
+
+    var foundIndex = tweets.findIndex(function (tweet) {
+        return tweet.id == id;
+    });
+    if (foundIndex > -1) {
+        tweets.splice(foundIndex, 1);
     }
+    console.log(tweets);
+}
+    li.appendChild(buttonDelete);
+    }
+    
